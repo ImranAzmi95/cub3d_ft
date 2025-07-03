@@ -46,7 +46,6 @@ OBJ_DIR = obj
 BONUS_SRC_DIR = src_bonus
 BONUS_OBJ_DIR = obj_bonus
 LIBFT_DIR = libft
-# MLX_DIR set by OS detection above
 HEADERS_DIR = include
 BONUS_HEADERS_DIR = include_bonus
 
