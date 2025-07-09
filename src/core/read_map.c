@@ -56,7 +56,7 @@ int add_map_line(char ***map, char *line)
     return (1);
 }
 
-int readMap(int fd, t_data *data)
+int readMap(int fd, t_map_data *data)
 {   
     char *line;
     int stat;

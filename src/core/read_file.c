@@ -15,7 +15,7 @@ int handle_empty(char *line)
     return (0);
 }
 
-int readFile(int fd, t_data *data)
+int readFile(int fd, t_map_data *data)
 {   
     int stat;
     char *line;

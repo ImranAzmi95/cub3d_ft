@@ -73,7 +73,12 @@ BONUS_INCLUDES = $(addprefix -I,$(BONUS_INCLUDE_DIRS)) -I$(LIBFT_DIR)/include
 
 SRC_FILES = \
 
-SRC_FILES_TEAM = \
+SRC_FILES_TEAM = 	cub3d 				\
+					parse 				\
+					read_file_utils 	\
+					read_file		 	\
+				 	read_map			\
+				 	utils 				\
 
 BONUS_SRC_FILES = \
 
@@ -96,7 +101,7 @@ TEST_NAME = tester
 BONUS_TEST_NAME = btester
 TEST_OBJ_DIR = test_obj
 BONUS_TEST_OBJ_DIR = btest_obj
-TEST_OBJ = $(TEST_OBJ_DIR)/$(TEST_NAME).o $(addprefix $(TEST_OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES) $(SRC_FILES_2)))
+TEST_OBJ = $(TEST_OBJ_DIR)/$(TEST_NAME).o $(addprefix $(TEST_OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES) $(SRC_FILES_TEAM)))
 BONUS_TEST_OBJ = $(BONUS_TEST_OBJ_DIR)/$(BONUS_TEST_NAME).o $(addprefix $(BONUS_TEST_OBJ_DIR)/, $(addsuffix .o, $(BONUS_SRC_FILES)))
 
 #------------------------------------------------------------------------------#

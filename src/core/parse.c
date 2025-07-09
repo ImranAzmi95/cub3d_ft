@@ -42,7 +42,7 @@ int ft_validName(char *c, char *t)
     return (0);
 }
 
-int ft_parse(int ac, char **av, t_data *data)
+int ft_parse(int ac, char **av, t_map_data *data)
 {
     int fd;
     

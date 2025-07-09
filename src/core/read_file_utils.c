@@ -1,7 +1,7 @@
 #include "cub3d.h"
 
 
-int save_texture(char c, char *path, t_data *data)
+int save_texture(char c, char *path, t_map_data *data)
 {
     if (c == 'N' && data->no_path[0] != '\0')
         return ft_errMsg("Duplicate NO texture");
@@ -22,7 +22,7 @@ int save_texture(char c, char *path, t_data *data)
     return (0);    
 }
 
-int handle_texture(char c, char *line, t_data *data, int stat)
+int handle_texture(char c, char *line, t_map_data *data, int stat)
 {
     char *path;
     int i;
@@ -80,7 +80,7 @@ int check_colour(int *colour, char *code, int *i, char delimit)
     return (save_colour(count, result, colour));
 }
 
-int handle_colour(char *line, char type, t_data *data, int stat)
+int handle_colour(char *line, char type, t_map_data *data, int stat)
 {
     int i;
 
@@ -93,16 +93,16 @@ int handle_colour(char *line, char type, t_data *data, int stat)
         return (ft_errMsg("missing colour code"));
     if (type == 'F')
     {
-        if (check_colour(&data->flo[0], line, &i, ',') == -1 ||
-            check_colour(&data->flo[1], line, &i, ',') == -1 ||
-            check_colour(&data->flo[2], line, &i, '\0') == -1)
+        if (check_colour(&data->floor_rgb[0], line, &i, ',') == -1 ||
+            check_colour(&data->floor_rgb[1], line, &i, ',') == -1 ||
+            check_colour(&data->floor_rgb[2], line, &i, '\0') == -1)
         return (-1);
     }
     if (type == 'C')
     {
-        if (check_colour(&data->cei[0], line, &i, ',') == -1 ||
-            check_colour(&data->cei[1], line, &i, ',') == -1 ||
-            check_colour(&data->cei[2], line, &i, '\0') == -1)
+        if (check_colour(&data->ceiling_rgb[0], line, &i, ',') == -1 ||
+            check_colour(&data->ceiling_rgb[1], line, &i, ',') == -1 ||
+            check_colour(&data->ceiling_rgb[2], line, &i, '\0') == -1)
         return (-1);
     }
     return (stat + 1);
