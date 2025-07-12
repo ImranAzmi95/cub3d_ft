@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void init_map_data(t_map_data *data)
+void init_map_data(t_map *data)
 {
     data->ceiling_rgb[0] = -1;
     data->ceiling_rgb[1] = -1;
