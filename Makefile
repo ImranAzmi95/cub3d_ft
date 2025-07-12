@@ -79,6 +79,10 @@ SRC_FILES_TEAM = 	cub3d 				\
 					read_file		 	\
 				 	read_map			\
 				 	utils 				\
+				 	ray_cast_init		\
+				 	ray_cast_dda		\
+				 	ray_cast_utils		\
+				 	ray_cast			\
 
 BONUS_SRC_FILES = \
 

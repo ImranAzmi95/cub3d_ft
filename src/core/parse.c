@@ -5,13 +5,13 @@ ft_isspace()
 space will return 1
 not space will return 0
 */
-int ft_isspace(char c)
+int ft_is_space(char c)
 {
     return (c == ' ' || c == '\t' || c == '\n'
          || c == '\v' || c == '\f' || c == '\r');
 }
 
-int ft_errMsg(char *c)
+int ft_err_msg(char *c)
 {
     int i;
 
@@ -24,7 +24,7 @@ int ft_errMsg(char *c)
     return (-1);
 }
 
-int ft_validName(char *c, char *t)
+int ft_valid_name(char *c, char *t)
 {
     int i;
 
@@ -42,27 +42,27 @@ int ft_validName(char *c, char *t)
     return (0);
 }
 
-int ft_parse(int ac, char **av, t_map_data *data)
+int ft_parse(int ac, char **av, t_map *data)
 {
     int fd;
     
     if (ac > 2)
-        return (ft_errMsg("Too many arguments"));
+        return (ft_err_msg("Too many arguments"));
     else if (ac == 1)
-        return (ft_errMsg("No arguments"));
-    else if (ft_validName(av[1],".cub") == 1)
-        return (ft_errMsg("Wrong file type"));
+        return (ft_err_msg("No arguments"));
+    else if (ft_valid_name(av[1],".cub") == 1)
+        return (ft_err_msg("Wrong file type"));
     fd = open(av[1], O_RDONLY);
     if (fd == -1)
-        return (ft_errMsg("Opening file"));
-    if (readFile(fd, data) == -1)
+        return (ft_err_msg("Opening file"));
+    if (read_file(fd, data) == -1)
         return (-1);
     else
-        readMap(fd, data);
+        read_map(fd, data);
     if (!data->map)
-        return (ft_errMsg("Map is empty"));
+        return (ft_err_msg("Map is empty"));
     close (fd);
     if (check_map(data->map) == -1)
-        return (ft_errMsg("Map is Invalid"));
+        return (ft_err_msg("Map is Invalid"));
     return (0);
 }

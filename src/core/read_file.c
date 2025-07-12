@@ -7,15 +7,15 @@ int handle_empty(char *line)
     i = 0;
     while (line[i] != '\0')
     {
-        if (ft_isspace(line[i]) == 1)
+        if (ft_is_space(line[i]) == 1)
             i++;
         else
-            return (ft_errMsg("Wrong map input"));
+            return (ft_err_msg("Wrong map input"));
     }
     return (0);
 }
 
-int readFile(int fd, t_map_data *data)
+int read_file(int fd, t_map *data)
 {   
     int stat;
     char *line;

@@ -21,8 +21,8 @@ int valid_map_line(char *line)
             start = 1 ;
         else if (c == 'E' || c == 'S' || c == 'W')
             start = 1 ;
-        else if (ft_isspace(c) == 0)
-            return (ft_errMsg("Invalid map"));
+        else if (ft_is_space(c) == 0)
+            return (ft_err_msg("Invalid map"));
         i++;
     }
     return (start);
@@ -56,7 +56,7 @@ int add_map_line(char ***map, char *line)
     return (1);
 }
 
-int readMap(int fd, t_map_data *data)
+int read_map(int fd, t_map *data)
 {   
     char *line;
     int stat;
@@ -69,14 +69,14 @@ int readMap(int fd, t_map_data *data)
         if (stat == -1)
         {
             free(line);
-            return (ft_errMsg("Invalid map element"));
+            return (ft_err_msg("Invalid map element"));
         }
         else if (stat == 1)
             map_started = add_map_line(&data->map, line);
         else if (stat == 0 && map_started)
         {
             free(line);
-            return (ft_errMsg("Invalid map format"));
+            return (ft_err_msg("Invalid map format"));
         }
         free(line);
     }
