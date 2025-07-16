@@ -29,7 +29,7 @@ int ft_valid_name(char *c, char *t)
     int i;
 
     i = 0;
-    while (c[i])
+    while (c[i] && c[i] != '\n')
         i++;
     if (c[i - 4] !=  t[0])
         return (-1);
@@ -56,7 +56,7 @@ int ft_parse(int ac, char **av, t_map *data)
     if (fd == -1)
         return (ft_err_msg("Opening file"));
     if (read_file(fd, data) == -1)
-        return (-1);
+        return (ft_err_msg("Not complete input"));
     else
         read_map(fd, data);
     if (!data->map)
@@ -64,5 +64,7 @@ int ft_parse(int ac, char **av, t_map *data)
     close (fd);
     if (check_map(data->map) == -1)
         return (ft_err_msg("Map is Invalid"));
+    if (check_pos(data->map, &data) == -1)
+        return (ft_err_msg("Player is Invalid"));
     return (0);
 }
