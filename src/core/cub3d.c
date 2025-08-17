@@ -44,7 +44,7 @@ int load_map(t_map *data)
 int main(int ac, char **av)
 {
     t_map data;
-    init_map_data(&data);
+    init_data(&data);
     if (ft_parse(ac, av, &data) == -1)
         return(free_arr(data.map));
     if (load_map(&data) == -1)
