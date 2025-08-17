@@ -12,7 +12,8 @@ void init_data(t_map *data)
     data->we_path[0] = '\0';
     data->no_path[0] = '\0';
     data->so_path[0] = '\0';
-    data->pos = 0;
+    data->pos_x = -1;
+    data->pos_y = -1;
     data->map = NULL;
 }
 

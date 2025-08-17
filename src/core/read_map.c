@@ -10,18 +10,14 @@ int valid_map_line(char *line)
 {
     int i;
     int start;
-    char c;
-
+ 
     i = 0;
     start = 0;
     while (line[i])
     {
-        c = line[i];
-        if (c == '1' || c == '0' || c == 'N')
-            start = 1 ;
-        else if (c == 'E' || c == 'S' || c == 'W')
-            start = 1 ;
-        else if (ft_is_space(c) == 0)
+        if (ft_strchr("10NSEW", line[i]))
+            start = 1;
+        else if (ft_is_space(line[i]) == 0)
             return (ft_err_msg("Invalid map"));
         i++;
     }
@@ -63,17 +59,11 @@ int read_map(int fd, t_map *data)
     {
         stat = valid_map_line(line);
         if (stat == -1)
-        {
-            free(line);
-            return (ft_err_msg("Invalid map element"));
-        }
+            return (free(line), ft_err_msg("Invalid map element"));
         else if (stat == 1)
             map_started = add_map_line(&data->map, line);
         else if (stat == 0 && map_started)
-        {
-            free(line);
-            return (ft_err_msg("Invalid map format"));
-        }
+            return (free(line), ft_err_msg("Invalid map format"));
         free(line);
     }
     return (0);
@@ -103,11 +93,47 @@ int check_map(char **map)
         j = 0;
         while (map[i][j])
         {
-            if (map[i][j] == '0' && check_empty_cell(map, i, j) == -1)
-                return (-1);
+            if (ft_strchr("0NESW", map[i][j]))
+            {
+                if (j == 0 || !ft_strchr("01NESW", map[i][j - 1]))
+                    return (-1);
+                if (!ft_strchr("01NESW", map[i][j + 1]))
+                    return (-1);
+                if (!ft_strchr("01NESW", map[i - 1][j]))
+                    return (-1);
+                if (!map[i + 1] || !ft_strchr("01NESW", map[i + 1][j]))
+                    return (-1);
+            }
             j++;            
         }
         i++;
     }
+    return (0);
+}
+
+int check_pos(char **map, t_map **data)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (map[i])
+    {
+        j = 0;
+        while (map[i][j])
+        {
+            if (ft_strchr("NESW", map[i][j]))
+            {
+                if ((*data)->pos_x >= 0 && (*data)->pos_y >= 0)
+                    return (-1);
+                (*data)->pos_y = i;
+                (*data)->pos_x = j;
+            }
+            j++;            
+        }
+        i++;
+    }
+    if ((*data)->pos_x < 0 && (*data)->pos_y < 0)
+        return (-1);
     return (0);
 }

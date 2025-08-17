@@ -30,6 +30,7 @@ int     valid_map_line(char *line);
 int     add_map_line(char ***map, char *line);
 int     read_map(int fd, t_map *data);
 int     check_map(char **map);
+int     check_pos(char **map, t_map **data);
 
 // utils
 /**********************/

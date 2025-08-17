@@ -21,7 +21,7 @@ int read_file(int fd, t_map *data)
     char *line;
     
     stat = 0;
-    while ((stat >= 0 && stat < 2) && (line = get_next_line(fd)) != NULL)
+    while ((stat >= 0 && stat < 6) && (line = get_next_line(fd)) != NULL)
     {
         if (ft_strncmp(line, "NO", 2) == 0)
             stat = handle_texture('N', line, data, stat);
@@ -36,7 +36,7 @@ int read_file(int fd, t_map *data)
         else if (ft_strncmp(line, "C", 1) == 0)
             stat = handle_colour(line, 'C', data, stat);
         else if (handle_empty(line) == -1)
-            data->stat = -1;
+            stat = -1;
         free (line);
     }
     return (stat);

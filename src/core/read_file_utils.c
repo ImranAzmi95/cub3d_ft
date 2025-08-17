@@ -35,7 +35,13 @@ int handle_texture(char c, char *line, t_map *data, int stat)
     path = line + i;
     if (*path == '\0')
         return (ft_err_msg("missing texture file"));
-    if ((ft_valid_name(path,".xpm") == 1) || (open(path, O_RDONLY) < 0))
+    if (ft_valid_name(path,".xpm") == -1)
+        return (ft_err_msg("Wrong path type"));
+    while (line[i] != '\n')
+        i++;
+    if (line[i] == '\n')
+        line[i] = '\0';
+    if (open(path, O_RDONLY) < 0)
         return(ft_err_msg("Wrong input path"));
     if (save_texture(c, path, data) == -1)
         return (-1);

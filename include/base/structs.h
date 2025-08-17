@@ -8,11 +8,15 @@ typedef struct s_map
 	char		we_path[1024];
 	char		no_path[1024];
 	char		so_path[1024];
-	char		pos;
 	int			floor_rgb[3];
 	int			ceiling_rgb[3];
-	int			stat;
+	char		pos_x;
+	char		pos_y;
 	char		**map;
+	void 		*mlx;
+	void 		*win;
+	void		*wall;
+	void		*eagle;
 }				t_map;
 
 typedef struct s_player
