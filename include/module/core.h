@@ -35,5 +35,17 @@ int     check_pos(char **map, t_map **data);
 // utils
 /**********************/
 
-void    init_map_data(t_map *data);
+void    init_data(t_map *data);
+int     get_map_len(char **map);
 int     free_arr(char **arr);
+
+// colour parse
+/**********************/
+
+int     parse_floor_colour(char *line, t_map *data, int *i);
+int     parse_ceiling_colour(char *line, t_map *data, int *i);
+
+// read map helpers
+/**********************/
+
+int     check_empty_cell(char **map, int i, int j);
