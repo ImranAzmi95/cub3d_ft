@@ -17,6 +17,10 @@ int handle_key(int keycode, void *param)
         strafe_left(&game->player, game->map_data.map);
     else if (keycode == KEY_D)
         strafe_right(&game->player, game->map_data.map);
+    else if (keycode == KEY_LEFT)
+        rotate_left(&game->player);
+    else if (keycode == KEY_RIGHT)
+        rotate_right(&game->player);
     return (0);
 }
 

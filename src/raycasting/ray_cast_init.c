@@ -28,8 +28,8 @@ void	init_player(t_player *player, char **map)
 void	init_ray(t_ray *ray, t_player *player, int x, int screen_width)
 {
 	ray->camera_x = 2 * x / (double)screen_width - 1;
-	ray->ray_dir_x = player->dir_x + player->plane_x * ray->camera_x;
-	ray->ray_dir_y = player->dir_y + player->plane_y * ray->camera_x;
+	ray->ray_dir_x = player->dir_x + (player->plane_x * player->fov_scale) * ray->camera_x;
+	ray->ray_dir_y = player->dir_y + (player->plane_y * player->fov_scale) * ray->camera_x;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
 	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
