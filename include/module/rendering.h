@@ -10,6 +10,15 @@ void	init_player(t_player *player, char **map);
 void	init_ray(t_ray *ray, t_player *player, int x, int screen_width);
 void	init_game(t_game *game, t_map *map_data);
 
+// player_init.c
+/**********************/
+
+void	set_player_north(t_player *player);
+void	set_player_south(t_player *player);
+void	set_player_east(t_player *player);
+void	set_player_west(t_player *player);
+void	set_player_direction(t_player *player, char direction);
+
 // ray_cast_dda.c
 /**********************/
 

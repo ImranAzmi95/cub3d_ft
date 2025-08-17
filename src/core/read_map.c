@@ -28,19 +28,15 @@ int valid_map_line(char *line)
     return (start);
 }
 
+
 int add_map_line(char ***map, char *line)
 {
     int len;
     int i;
     char **new_map;
 
-    len = 0;
+    len = get_map_len(*map);
     i = -1;
-    if (*map)
-    {
-        while ((*map)[len] != NULL)
-            len++;
-    }
     new_map = malloc(sizeof(char *) * (len + 2));
     if (new_map == NULL)
         return (0);
@@ -83,6 +79,19 @@ int read_map(int fd, t_map *data)
     return (0);
 }
 
+int check_empty_cell(char **map, int i, int j)
+{
+    if (j == 0 || (map[i][j - 1] != '1' && map[i][j - 1] != '0'))
+        return (-1);
+    if (map[i][j + 1] != '1' && map[i][j + 1] != '0')
+        return (-1);
+    if (i == 0 || (map[i - 1][j] != '1' && map[i - 1][j] != '0'))
+        return (-1);
+    if (!map[i + 1] || (map[i + 1][j] != '1' && map[i + 1][j] != '0'))
+        return (-1);
+    return (0);
+}
+
 int check_map(char **map)
 {
     int i;
@@ -94,17 +103,8 @@ int check_map(char **map)
         j = 0;
         while (map[i][j])
         {
-            if (map[i][j] == '0')
-            {
-                if (j == 0 || (map[i][j - 1] != '1' && map[i][j - 1] != '0'))
-                    return (-1);
-                if (map[i][j + 1] != '1' && map[i][j + 1] != '0')
-                    return (-1);
-                if (i == 0 || (map[i - 1][j] != '1' && map[i - 1][j] != '0'))
-                    return (-1);
-                if (!map[i + 1] || (map[i + 1][j] != '1' && map[i + 1][j] != '0'))
-                    return (-1);
-            }
+            if (map[i][j] == '0' && check_empty_cell(map, i, j) == -1)
+                return (-1);
             j++;            
         }
         i++;

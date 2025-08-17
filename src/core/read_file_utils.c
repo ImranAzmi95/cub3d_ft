@@ -91,19 +91,9 @@ int handle_colour(char *line, char type, t_map *data, int stat)
         i++;
     if (*(line + i) == '\0')
         return (ft_err_msg("missing colour code"));
-    if (type == 'F')
-    {
-        if (check_colour(&data->floor_rgb[0], line, &i, ',') == -1 ||
-            check_colour(&data->floor_rgb[1], line, &i, ',') == -1 ||
-            check_colour(&data->floor_rgb[2], line, &i, '\0') == -1)
+    if (type == 'F' && parse_floor_colour(line, data, &i) == -1)
         return (-1);
-    }
-    if (type == 'C')
-    {
-        if (check_colour(&data->ceiling_rgb[0], line, &i, ',') == -1 ||
-            check_colour(&data->ceiling_rgb[1], line, &i, ',') == -1 ||
-            check_colour(&data->ceiling_rgb[2], line, &i, '\0') == -1)
+    if (type == 'C' && parse_ceiling_colour(line, data, &i) == -1)
         return (-1);
-    }
     return (stat + 1);
 }

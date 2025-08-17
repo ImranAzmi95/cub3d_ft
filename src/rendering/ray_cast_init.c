@@ -16,34 +16,7 @@ void	init_player(t_player *player, char **map)
 			{
 				player->pos_x = j + 0.5;
 				player->pos_y = i + 0.5;
-				if (map[i][j] == 'N')
-				{
-					player->dir_x = 0;
-					player->dir_y = -1;
-					player->plane_x = 0.66;
-					player->plane_y = 0;
-				}
-				else if (map[i][j] == 'S')
-				{
-					player->dir_x = 0;
-					player->dir_y = 1;
-					player->plane_x = -0.66;
-					player->plane_y = 0;
-				}
-				else if (map[i][j] == 'E')
-				{
-					player->dir_x = 1;
-					player->dir_y = 0;
-					player->plane_x = 0;
-					player->plane_y = 0.66;
-				}
-				else if (map[i][j] == 'W')
-				{
-					player->dir_x = -1;
-					player->dir_y = 0;
-					player->plane_x = 0;
-					player->plane_y = -0.66;
-				}
+				set_player_direction(player, map[i][j]);
 				return ;
 			}
 			j++;

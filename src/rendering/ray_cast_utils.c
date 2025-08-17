@@ -41,7 +41,7 @@ int	is_valid_map_pos(int x, int y, char **map)
 		i++;
 	if (y >= i)
 		return (0);
-	if (x >= ft_strlen(map[y]))
+	if (x >= (int)ft_strlen(map[y]))
 		return (0);
 	return (1);
 }

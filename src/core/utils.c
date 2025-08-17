@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void init_map_data(t_map *data)
+void init_data(t_map *data)
 {
     data->ceiling_rgb[0] = -1;
     data->ceiling_rgb[1] = -1;
@@ -14,6 +14,19 @@ void init_map_data(t_map *data)
     data->so_path[0] = '\0';
     data->pos = 0;
     data->map = NULL;
+}
+
+int get_map_len(char **map)
+{
+    int len;
+
+    len = 0;
+    if (map)
+    {
+        while (map[len] != NULL)
+            len++;
+    }
+    return (len);
 }
 
 int free_arr(char **arr)
