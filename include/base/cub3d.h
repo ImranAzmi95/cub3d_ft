@@ -32,6 +32,8 @@
 /**********************/
 
 # include "core.h"
-# include "rendering.h"
+# include "player.h"
+# include "graphics.h"
+# include "raycasting.h"
 
 #endif

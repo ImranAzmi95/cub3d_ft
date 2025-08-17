@@ -86,6 +86,7 @@ SRC_FILES_TEAM = 	cub3d 				\
 				 	utils 				\
 					colour_parse		\
 					player_init			\
+					player_movement		\
 
 BONUS_SRC_FILES = \
 
