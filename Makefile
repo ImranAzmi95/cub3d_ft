@@ -71,11 +71,14 @@ BONUS_INCLUDES = $(addprefix -I,$(BONUS_INCLUDE_DIRS)) -I$(LIBFT_DIR)/include
 #                                SOURCE FILES                                  #
 #------------------------------------------------------------------------------#
 
-SRC_FILES = ray_cast_init		\
-			ray_cast_dda		\
-			ray_cast_utils		\
-			ray_cast			\
-			texture_loader
+SRC_FILES = ray_cast_init			\
+			ray_cast_dda			\
+			ray_cast_utils			\
+			ray_cast				\
+			texture_loader			\
+			player_movement			\
+			player_movement_utils	\
+			player_rotation			\
 
 SRC_FILES_TEAM = 	cub3d 				\
 					parse 				\
@@ -86,8 +89,6 @@ SRC_FILES_TEAM = 	cub3d 				\
 				 	utils 				\
 					colour_parse		\
 					player_init			\
-					player_movement		\
-					player_rotation		\
 
 BONUS_SRC_FILES = \
 

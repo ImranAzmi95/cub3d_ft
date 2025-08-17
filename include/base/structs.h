@@ -13,8 +13,8 @@ typedef struct s_map
 	char		pos_x;
 	char		pos_y;
 	char		**map;
-	void 		*mlx;
-	void 		*win;
+	void		*mlx;
+	void		*win;
 	void		*wall;
 	void		*eagle;
 }				t_map;
@@ -28,6 +28,7 @@ typedef struct s_player
 	double		plane_x;
 	double		plane_y;
 	double		fov_scale;
+	double		radius;
 }				t_player;
 
 typedef struct s_ray
