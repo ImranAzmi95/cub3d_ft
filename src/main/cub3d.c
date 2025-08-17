@@ -24,6 +24,13 @@ int handle_key(int keycode, void *param)
     return (0);
 }
 
+int handle_close(void *param)
+{
+    t_game *game = (t_game *)param;
+    mlx_destroy_window(game->mlx, game->win);
+    exit(0);
+}
+
 int game_loop(void *param)
 {
     t_game *game = (t_game *)param;
@@ -37,7 +44,8 @@ int start_game(t_map *data)
     t_game game;
     
     init_game(&game, data);
-    mlx_key_hook(game.win, handle_key, &game);
+    mlx_hook(game.win, 3, 1L<<1, handle_key, &game);
+    mlx_hook(game.win, 17, 0, handle_close, &game);
     mlx_loop_hook(game.mlx, game_loop, &game);
     mlx_loop(game.mlx);
     return (0);
