@@ -1,5 +1,17 @@
 #include "cub3d.h"
 
+int	is_player_char(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
+
+void	set_player_position(t_player *player, int i, int j, char direction)
+{
+	player->pos_x = j + 0.5;
+	player->pos_y = i + 0.5;
+	set_player_direction(player, direction);
+}
+
 void	init_player(t_player *player, char **map)
 {
 	int	i;
@@ -11,12 +23,9 @@ void	init_player(t_player *player, char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == 'N' || map[i][j] == 'S' || 
-				map[i][j] == 'E' || map[i][j] == 'W')
+			if (is_player_char(map[i][j]))
 			{
-				player->pos_x = j + 0.5;
-				player->pos_y = i + 0.5;
-				set_player_direction(player, map[i][j]);
+				set_player_position(player, i, j, map[i][j]);
 				return ;
 			}
 			j++;

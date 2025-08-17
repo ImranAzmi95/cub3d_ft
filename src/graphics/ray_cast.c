@@ -44,29 +44,45 @@ void	draw_textured_wall(t_game *game, t_ray *ray, int x)
 	draw_wall_column(game, ray, x, tex_num);
 }
 
+int	calculate_ceiling_color(t_game *game)
+{
+	return ((game->map_data.ceiling_rgb[0] << 16) | 
+		(game->map_data.ceiling_rgb[1] << 8) | game->map_data.ceiling_rgb[2]);
+}
+
+int	calculate_floor_color(t_game *game)
+{
+	return ((game->map_data.floor_rgb[0] << 16) | 
+		(game->map_data.floor_rgb[1] << 8) | game->map_data.floor_rgb[2]);
+}
+
+void	draw_ceiling_floor(t_game *game, t_ray *ray, int x)
+{
+	int	y;
+	int	ceiling_color;
+	int	floor_color;
+
+	ceiling_color = calculate_ceiling_color(game);
+	floor_color = calculate_floor_color(game);
+	y = 0;
+	while (y < ray->draw_start)
+		put_pixel(game, x, y++, ceiling_color);
+	y = ray->draw_end + 1;
+	while (y < game->win_height)
+		put_pixel(game, x, y++, floor_color);
+}
+
 void	cast_ray(t_game *game, int x)
 {
 	t_ray	ray;
-	int		y;
-	int		ceiling_color;
-	int		floor_color;
 
 	init_ray(&ray, &game->player, x, game->win_width);
 	calculate_step_and_side_dist(&ray, &game->player);
 	perform_dda(&ray, game->map_data.map);
 	calculate_wall_distance(&ray, &game->player);
 	calculate_wall_height(&ray, game->win_height);
-	ceiling_color = (game->map_data.ceiling_rgb[0] << 16) | 
-		(game->map_data.ceiling_rgb[1] << 8) | game->map_data.ceiling_rgb[2];
-	floor_color = (game->map_data.floor_rgb[0] << 16) | 
-		(game->map_data.floor_rgb[1] << 8) | game->map_data.floor_rgb[2];
-	y = 0;
-	while (y < ray.draw_start)
-		put_pixel(game, x, y++, ceiling_color);
+	draw_ceiling_floor(game, &ray, x);
 	draw_textured_wall(game, &ray, x);
-	y = ray.draw_end + 1;
-	while (y < game->win_height)
-		put_pixel(game, x, y++, floor_color);
 }
 
 void	render_frame(t_game *game)

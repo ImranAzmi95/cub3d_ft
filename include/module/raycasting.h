@@ -6,6 +6,8 @@
 // ray_cast_init.c
 /**********************/
 
+int		is_player_char(char c);
+void	set_player_position(t_player *player, int i, int j, char direction);
 void	init_player(t_player *player, char **map);
 void	init_ray(t_ray *ray, t_player *player, int x, int screen_width);
 void	init_game(t_game *game, t_map *map_data);
