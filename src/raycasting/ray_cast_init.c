@@ -1,5 +1,17 @@
 #include "cub3d.h"
 
+int	is_player_char(char c)
+{
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
+}
+
+void	set_player_position(t_player *player, int i, int j, char direction)
+{
+	player->pos_x = j + 0.5;
+	player->pos_y = i + 0.5;
+	set_player_direction(player, direction);
+}
+
 void	init_player(t_player *player, char **map)
 {
 	int	i;
@@ -11,12 +23,9 @@ void	init_player(t_player *player, char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == 'N' || map[i][j] == 'S' || 
-				map[i][j] == 'E' || map[i][j] == 'W')
+			if (is_player_char(map[i][j]))
 			{
-				player->pos_x = j + 0.5;
-				player->pos_y = i + 0.5;
-				set_player_direction(player, map[i][j]);
+				set_player_position(player, i, j, map[i][j]);
 				return ;
 			}
 			j++;
@@ -28,8 +37,8 @@ void	init_player(t_player *player, char **map)
 void	init_ray(t_ray *ray, t_player *player, int x, int screen_width)
 {
 	ray->camera_x = 2 * x / (double)screen_width - 1;
-	ray->ray_dir_x = player->dir_x + player->plane_x * ray->camera_x;
-	ray->ray_dir_y = player->dir_y + player->plane_y * ray->camera_x;
+	ray->ray_dir_x = player->dir_x + (player->plane_x * player->fov_scale) * ray->camera_x;
+	ray->ray_dir_y = player->dir_y + (player->plane_y * player->fov_scale) * ray->camera_x;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
 	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
