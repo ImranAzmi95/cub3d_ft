@@ -6,8 +6,8 @@
 # define TEXTURE_SIZE 64
 # define MAP_SIZE 24
 # define FOV 60
-# define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 0.5
+# define ROT_SPEED 0.2
 
 # ifdef __APPLE__
 #  define KEY_ESC 53
