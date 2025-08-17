@@ -49,4 +49,9 @@ void	init_game(t_game *game, t_map *map_data)
 		&game->line_length, &game->endian);
 	game->map_data = *map_data;
 	init_player(&game->player, map_data->map);
+	if (load_all_textures(game) == -1)
+	{
+		ft_err_msg("Error loading textures");
+		exit(1);
+	}
 }

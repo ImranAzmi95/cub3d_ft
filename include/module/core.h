@@ -49,3 +49,7 @@ int     parse_ceiling_colour(char *line, t_map *data, int *i);
 /**********************/
 
 int     check_empty_cell(char **map, int i, int j);
+int		check_map_cell(char **map, int i, int j);
+int     check_map(char **map);
+int		handle_player_position(char **map, t_map **data, int i, int j);
+int     check_pos(char **map, t_map **data);

@@ -40,7 +40,10 @@ void	perform_dda(t_ray *ray, char **map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map[ray->map_y][ray->map_x] == '1')
+		if (is_valid_map_pos(ray->map_x, ray->map_y, map) && 
+			map[ray->map_y][ray->map_x] == '1')
+			ray->hit = 1;
+		else if (!is_valid_map_pos(ray->map_x, ray->map_y, map))
 			ray->hit = 1;
 	}
 }
