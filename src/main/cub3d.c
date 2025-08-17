@@ -2,12 +2,21 @@
 
 int handle_key(int keycode, void *param)
 {
+    t_game *game = (t_game *)param;
+    
     if (keycode == KEY_ESC)
     {
-        t_game *game = (t_game *)param;
         mlx_destroy_window(game->mlx, game->win);
         exit(0);
     }
+    else if (keycode == KEY_W)
+        move_forward(&game->player, game->map_data.map);
+    else if (keycode == KEY_S)
+        move_backward(&game->player, game->map_data.map);
+    else if (keycode == KEY_A)
+        strafe_left(&game->player, game->map_data.map);
+    else if (keycode == KEY_D)
+        strafe_right(&game->player, game->map_data.map);
     return (0);
 }
 

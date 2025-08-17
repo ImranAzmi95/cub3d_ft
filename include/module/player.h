@@ -19,6 +19,5 @@ void	move_forward(t_player *player, char **map);
 void	move_backward(t_player *player, char **map);
 void	strafe_left(t_player *player, char **map);
 void	strafe_right(t_player *player, char **map);
-void	rotate_left(t_player *player);
 
 #endif
