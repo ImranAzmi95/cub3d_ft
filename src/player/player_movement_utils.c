@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iazmi <iazmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lechan <lechan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 22:37:36 by iazmi             #+#    #+#             */
-/*   Updated: 2025/08/18 22:37:38 by iazmi            ###   ########.fr       */
+/*   Updated: 2025/08/19 00:31:32 by lechan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	is_valid_position_circle(double x, double y, double radius, char **map)
 
 int	is_valid_position(double x, double y, char **map)
 {
-	int map_x;
-	int map_y;
+	int	map_x;
+	int	map_y;
 
 	map_x = (int)x;
 	map_y = (int)y;

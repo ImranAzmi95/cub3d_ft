@@ -3,53 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iazmi <iazmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lechan <lechan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 22:37:17 by iazmi             #+#    #+#             */
-/*   Updated: 2025/08/18 22:37:20 by iazmi            ###   ########.fr       */
+/*   Updated: 2025/08/19 00:55:25 by lechan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int handle_empty(char *line)
+int	handle_empty(char *line)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (line[i] != '\0')
-    {
-        if (ft_is_space(line[i]) == 1)
-            i++;
-        else
-            return (ft_err_msg("Wrong map input"));
-    }
-    return (0);
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (ft_is_space(line[i]) == 1)
+			i++;
+		else
+			return (ft_err_msg("Wrong map input"));
+	}
+	return (0);
 }
 
-int read_file(int fd, t_map *data)
-{   
-    int stat;
-    char *line;
-    
-    stat = 0;
-    while ((stat >= 0 && stat < 6) && (line = get_next_line(fd)) != NULL)
-    {
-        if (ft_strncmp(line, "NO", 2) == 0)
-            stat = handle_texture('N', line, data, stat);
-        else if (ft_strncmp(line, "SO", 2) == 0)
-            stat = handle_texture('S', line, data, stat);
-        else if (ft_strncmp(line, "WE", 2) == 0)
-            stat = handle_texture('W', line, data, stat);
-        else if (ft_strncmp(line, "EA", 2) == 0)
-            stat = handle_texture('E', line, data, stat);
-        else if (ft_strncmp(line, "F", 1) == 0)
-            stat = handle_colour(line, 'F', data, stat);
-        else if (ft_strncmp(line, "C", 1) == 0)
-            stat = handle_colour(line, 'C', data, stat);
-        else if (handle_empty(line) == -1)
-            stat = -1;
-        free (line);
-    }
-    return (stat);
+int	read_file(int fd, t_map *data, int stat)
+{
+	char	*line;
+
+	while (stat >= 0 && stat < 6)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		if (ft_strncmp(line, "NO", 2) == 0)
+			stat = handle_texture('N', line, data, stat);
+		else if (ft_strncmp(line, "SO", 2) == 0)
+			stat = handle_texture('S', line, data, stat);
+		else if (ft_strncmp(line, "WE", 2) == 0)
+			stat = handle_texture('W', line, data, stat);
+		else if (ft_strncmp(line, "EA", 2) == 0)
+			stat = handle_texture('E', line, data, stat);
+		else if (ft_strncmp(line, "F", 1) == 0)
+			stat = handle_colour(line, 'F', data, stat);
+		else if (ft_strncmp(line, "C", 1) == 0)
+			stat = handle_colour(line, 'C', data, stat);
+		else if (handle_empty(line) == -1)
+			stat = -1;
+		free (line);
+	}
+	return (stat);
 }

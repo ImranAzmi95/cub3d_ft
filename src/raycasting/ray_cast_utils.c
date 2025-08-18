@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cast_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iazmi <iazmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lechan <lechan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 22:37:58 by iazmi             #+#    #+#             */
-/*   Updated: 2025/08/18 22:37:59 by iazmi            ###   ########.fr       */
+/*   Updated: 2025/08/19 00:35:06 by lechan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	is_valid_map_pos(int x, int y, char **map)
 
 void	put_pixel(t_game *game, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	if (x >= 0 && x < game->win_width && y >= 0 && y < game->win_height)
 	{

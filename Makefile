@@ -1,4 +1,14 @@
-
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lechan <lechan@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/08/19 00:41:15 by lechan            #+#    #+#              #
+#    Updated: 2025/08/19 00:49:31 by lechan           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 #------------------------------------------------------------------------------#
 #                                  GENERICS                                    #
@@ -73,6 +83,7 @@ BONUS_INCLUDES = $(addprefix -I,$(BONUS_INCLUDE_DIRS)) -I$(LIBFT_DIR)/include
 
 SRC_FILES = ray_cast_init			\
 			ray_cast_dda			\
+			ray_cast_util			\
 			ray_cast_utils			\
 			ray_cast				\
 			texture_loader			\

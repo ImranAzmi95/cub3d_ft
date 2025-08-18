@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cast_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iazmi <iazmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lechan <lechan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 22:37:54 by iazmi             #+#    #+#             */
-/*   Updated: 2025/08/18 22:37:55 by iazmi            ###   ########.fr       */
+/*   Updated: 2025/08/19 00:36:54 by lechan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void	init_game(t_game *game, t_map *map_data)
 	game->win_width = 800;
 	game->win_height = 600;
 	game->win = mlx_new_window(game->mlx, game->win_width,
-		game->win_height, "cub3d");
+			game->win_height, "cub3d");
 	game->img = mlx_new_image(game->mlx, game->win_width, game->win_height);
 	game->addr = mlx_get_data_addr(game->img, &game->bits_per_pixel,
-		&game->line_length, &game->endian);
+			&game->line_length, &game->endian);
 	game->map_data = *map_data;
 	init_player(&game->player, map_data->map);
 	if (load_all_textures(game) == -1)

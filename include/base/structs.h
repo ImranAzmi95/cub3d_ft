@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lechan <lechan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/18 23:21:34 by lechan            #+#    #+#             */
+/*   Updated: 2025/08/19 00:40:14 by lechan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
 # include "libft.h"
+
 typedef struct s_map
 {
 	char		ea_path[1024];
@@ -78,5 +91,11 @@ typedef struct s_game
 	t_player	player;
 	t_texture	textures[4];
 }				t_game;
+
+typedef struct s_text_cord
+{
+	int			tex_x;
+	int			tex_y;
+}				t_text_cord;
 
 #endif

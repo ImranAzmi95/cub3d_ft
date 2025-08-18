@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_cast_dda.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iazmi <iazmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lechan <lechan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 22:37:50 by iazmi             #+#    #+#             */
-/*   Updated: 2025/08/18 22:37:51 by iazmi            ###   ########.fr       */
+/*   Updated: 2025/08/19 00:38:56 by lechan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	calculate_step_and_side_dist(t_ray *ray, t_player *player)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x) * ray->delta_dist_x;
+		ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x)
+			* ray->delta_dist_x;
 	}
 	if (ray->ray_dir_y < 0)
 	{
@@ -32,7 +33,8 @@ void	calculate_step_and_side_dist(t_ray *ray, t_player *player)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) * ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y)
+			* ray->delta_dist_y;
 	}
 }
 
@@ -52,8 +54,8 @@ void	perform_dda(t_ray *ray, char **map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (is_valid_map_pos(ray->map_x, ray->map_y, map) && 
-			map[ray->map_y][ray->map_x] == '1')
+		if (is_valid_map_pos(ray->map_x, ray->map_y, map)
+			&& map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 		else if (!is_valid_map_pos(ray->map_x, ray->map_y, map))
 			ray->hit = 1;
@@ -63,11 +65,11 @@ void	perform_dda(t_ray *ray, char **map)
 void	calculate_wall_distance(t_ray *ray, t_player *player)
 {
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - player->pos_x + 
-			(1 - ray->step_x) / 2) / ray->ray_dir_x;
+		ray->perp_wall_dist = (ray->map_x - player->pos_x
+				+ (1 - ray->step_x) / 2) / ray->ray_dir_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - player->pos_y + 
-			(1 - ray->step_y) / 2) / ray->ray_dir_y;
+		ray->perp_wall_dist = (ray->map_y - player->pos_y
+				+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
 }
 
 void	calculate_wall_height(t_ray *ray, int screen_height)

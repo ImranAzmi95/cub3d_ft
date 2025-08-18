@@ -3,56 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iazmi <iazmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lechan <lechan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 22:38:02 by iazmi             #+#    #+#             */
-/*   Updated: 2025/08/18 22:38:03 by iazmi            ###   ########.fr       */
+/*   Updated: 2025/08/19 00:34:34 by lechan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void init_data(t_map *data)
+void	init_data(t_map *data)
 {
-    data->ceiling_rgb[0] = -1;
-    data->ceiling_rgb[1] = -1;
-    data->ceiling_rgb[2] = -1;
-    data->floor_rgb[0] = -1;
-    data->floor_rgb[1] = -1;
-    data->floor_rgb[2] = -1;
-    data->ea_path[0] = '\0';
-    data->we_path[0] = '\0';
-    data->no_path[0] = '\0';
-    data->so_path[0] = '\0';
-    data->pos_x = -1;
-    data->pos_y = -1;
-    data->map = NULL;
+	data->ceiling_rgb[0] = -1;
+	data->ceiling_rgb[1] = -1;
+	data->ceiling_rgb[2] = -1;
+	data->floor_rgb[0] = -1;
+	data->floor_rgb[1] = -1;
+	data->floor_rgb[2] = -1;
+	data->ea_path[0] = '\0';
+	data->we_path[0] = '\0';
+	data->no_path[0] = '\0';
+	data->so_path[0] = '\0';
+	data->pos_x = -1;
+	data->pos_y = -1;
+	data->map = NULL;
 }
 
-int get_map_len(char **map)
+int	get_map_len(char **map)
 {
-    int len;
+	int	len;
 
-    len = 0;
-    if (map)
-    {
-        while (map[len] != NULL)
-            len++;
-    }
-    return (len);
+	len = 0;
+	if (map)
+	{
+		while (map[len] != NULL)
+			len++;
+	}
+	return (len);
 }
 
-int free_arr(char **arr)
+int	free_arr(char **arr)
 {
-    int i = 0;
+	int	i;
 
-    if (!arr)
-        return (-1);
-    while (arr[i])
-    {
-        free(arr[i]);
-        i++;
-    }
-    free(arr);
-    return (0);
+	i = 0;
+	if (!arr)
+		return (-1);
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (0);
 }
