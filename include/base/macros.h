@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechan <lechan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iazmi <iazmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 23:21:28 by lechan            #+#    #+#             */
-/*   Updated: 2025/08/18 23:21:29 by lechan           ###   ########.fr       */
+/*   Updated: 2025/08/20 23:41:49 by iazmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define SCREEN_HEIGHT 768
 # define TEXTURE_SIZE 64
 # define MAP_SIZE 24
-# define FOV 60
+# define FOV_SCALE 0.66
 # define MOVE_SPEED 0.5
 # define ROT_SPEED 0.2
 
